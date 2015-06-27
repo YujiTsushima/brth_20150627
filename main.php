@@ -104,8 +104,10 @@ $teamYosoku = $dao->getRecords('SELECT * FROM tbl_team ORDER BY RAND() limit 0, 
 
 $member="";
 if (isset($_POST['detailid']) && $_POST['detailid'] != "") {
-	echo $_POST['detailid'];
+	//echo $_POST['detailid'];
 	$member = $dao->getRecords('SELECT * FROM tbl_member where team_id = ' .$_POST['detailid']. ' order by id;');
+}else{
+	$member = $dao->getRecords('SELECT * FROM tbl_member where team_id = 1 order by id;');
 }
 ?>
 
@@ -129,7 +131,14 @@ if (isset($_POST['detailid']) && $_POST['detailid'] != "") {
 					print "	<tr><td>";
 					print $i++ . " . " . $row['name'];
 					print "	</td><td>";
-					print "	\\1,234,567";
+					if ($i == 2) {
+						print "	\\1,000,000";
+					} else if ($i == 3) {
+						print "	\\600,000";
+					} else {
+						print "	\\300,000";
+					}
+
 					print "	</td></tr>";
 				}
 			?>
@@ -141,7 +150,7 @@ if (isset($_POST['detailid']) && $_POST['detailid'] != "") {
 		<table id="team">
 			<tr>
 				<th>チーム名</th>
-				<th>詳細</th>
+				<th style='width:40px;'>詳細</th>
 				<th>かけ金</th>
 			</tr>
 			<?php
@@ -150,11 +159,11 @@ if (isset($_POST['detailid']) && $_POST['detailid'] != "") {
 					
 					print "	<tr><td>";
 					print $row['id'] . " . " . $row['name'];
-					print "	</td><td>";
+					print "	</td><td style='width:40px;'>";
 				//	print "<input type='link' value='詳細' name='detail" .$row['id']. "' onclick='detail(" .$row['id']. ");'>";
 				print '<a href="javascript:detail(' .$row['id']. ');">詳細</a>';
 					print "	</td><td>";
-					print "	<input type='text' name='kakekin" . $row['id'] . "' size='20' maxlength='20'>VND";
+					print "	<input type='text' name='kakekin" . $row['id'] . "' size='10' maxlength='20'>VND";
 					print "	</td></tr>";
 				}
 			?>
