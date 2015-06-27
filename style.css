@@ -6,12 +6,30 @@ body
 	font-size:20px;
 }
 
-#member th, td
+#member
 {
-	background-color:#99FF66;
-	width:160px;
-	border:2px #000 solid;
+	border-collapse:collapse;
+	border-style:solid;
+	border-width:2px;
+}
+
+#member th
+{
+	background-color:;
+	width:230px;
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
+
 	
+}
+
+#member td
+{
+	background-color:;
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
 }
 
 
@@ -28,21 +46,26 @@ body
 /* 戦闘力 */
 .sento
 {
-	background-color:#FF00FF;
+	background-color:#F00;
 	font-weight:bold;
-	width:150px;
+	width:100px;
 	text-align:center;
-	border:2px #000 solid;
+	
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
 }
 
 /* 戦闘力クラス*/
 .sentoclass
 {
-	background-color:#00FFFF;
+	background-color:#F00;
 	font-weight:bold;
-	width:150px;
+	width:100px;
 	text-align:center;
-	border:2px #000 solid;
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
 }
 
 
