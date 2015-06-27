@@ -27,10 +27,6 @@ class dao
 			die('DB select error');
 		}
 		$result = mysql_query($sql);
-		if (!$result) {
-			die('select error');
-			return null;
-		}
 
 		mysql_close($link);
 		return $result;

@@ -1,0 +1,41 @@
+﻿@CHARSET "UTF-8";
+
+body
+{
+	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+	font-size:20px;
+}
+
+#member th
+{
+	background-color:#FF0000;
+	width:100px;
+}
+
+
+/* 合計 */
+.sum
+{
+	background-color:#FFFF00;
+	font-weight:bold;
+	width:100px;
+	text-align:center;
+}
+
+/* 戦闘力 */
+.sento
+{
+	background-color:#FF00FF;
+	font-weight:bold;
+	width:150px;
+	text-align:center;
+}
+
+/* 戦闘力クラス*/
+.sentoclass
+{
+	background-color:#00FFFF;
+	font-weight:bold;
+	width:150px;
+	text-align:center;
+}
