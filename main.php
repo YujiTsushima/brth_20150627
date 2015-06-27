@@ -130,7 +130,7 @@ if (isset($_POST['detailid']) && $_POST['detailid'] != "") {
 				while($row = mysql_fetch_assoc($teamYosoku)){
 					print "	<tr><td>";
 					print $i++ . " . " . $row['name'];
-					print "	</td><td>";
+					print "	</td><td style='text-align:right;'>";
 					if ($i == 2) {
 						//print "	\\1,000,000";
 						print "	\\".number_format(mt_rand(1000000, 1500000));
