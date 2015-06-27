@@ -6,10 +6,12 @@ body
 	font-size:20px;
 }
 
-#member th
+#member th, td
 {
-	background-color:#FF0000;
-	width:100px;
+	background-color:#99FF66;
+	width:160px;
+	border:2px #000 solid;
+	
 }
 
 
@@ -20,6 +22,7 @@ body
 	font-weight:bold;
 	width:100px;
 	text-align:center;
+	border:2px #000 solid;
 }
 
 /* 戦闘力 */
@@ -29,6 +32,7 @@ body
 	font-weight:bold;
 	width:150px;
 	text-align:center;
+	border:2px #000 solid;
 }
 
 /* 戦闘力クラス*/
@@ -38,4 +42,5 @@ body
 	font-weight:bold;
 	width:150px;
 	text-align:center;
+	border:2px #000 solid;
 }
