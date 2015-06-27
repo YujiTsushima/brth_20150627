@@ -11,6 +11,11 @@
 		//location.href="http://ec2-52-10-225-227.us-west-2.compute.amazonaws.com/main/"
 		document.member.submit();
 	}
+	
+	function detail(id){
+		document.detail.detailid.value = id;
+		document.detail.submit();
+	}
 </script>
 
 
@@ -22,6 +27,16 @@ require "const.php";
 session_start();
 
 $dao = new dao();
+
+// [掛ける]ボタンが押されたあと
+if (isset($_POST['kakeru']) && $_POST['kakeru'] != "") {
+	$teamids = $_POST['teamid'];
+
+	foreach ($teamids as $teamid) {
+		$sql = "replace INTO tbl_bet VALUES('yoshikawa' ," .$teamid. "," .$_POST['kakekin' .$teamid]. ");";
+		$ret = $dao->inputRecords($sql);
+ 	}
+}
 
 if (isset($_POST['btn']) && $_POST['btn'] != "") {
 	$ids = $_POST['id'];
@@ -86,10 +101,19 @@ if (isset($_POST['btn']) && $_POST['btn'] != "") {
 // チーム情報を取得
 $team = $dao->getRecords('SELECT * FROM tbl_team');
 $teamYosoku = $dao->getRecords('SELECT * FROM tbl_team ORDER BY RAND() limit 0, 3;');
-$member = $dao->getRecords('SELECT * FROM tbl_member where team_id = 1 order by id;');
+
+$member="";
+if (isset($_POST['detailid']) && $_POST['detailid'] != "") {
+	echo $_POST['detailid'];
+	$member = $dao->getRecords('SELECT * FROM tbl_member where team_id = ' .$_POST['detailid']. ' order by id;');
+}
 ?>
 
 <body>
+	
+	<form name="detail" method="POST" action="main.php">
+		<input type="hidden" name="detailid" value="">
+	</form>
 
 <div id="topleft">
 	<span style="font-weight: bold;">予測</span>
@@ -105,7 +129,7 @@ $member = $dao->getRecords('SELECT * FROM tbl_member where team_id = 1 order by 
 					print "	<tr><td>";
 					print $i++ . " . " . $row['name'];
 					print "	</td><td>";
-					print "	\1,234,567";
+					print "	\\1,234,567";
 					print "	</td></tr>";
 				}
 			?>
@@ -117,19 +141,25 @@ $member = $dao->getRecords('SELECT * FROM tbl_member where team_id = 1 order by 
 		<table id="team">
 			<tr>
 				<th>チーム名</th>
+				<th>詳細</th>
 				<th>かけ金</th>
 			</tr>
 			<?php
 				while($row = mysql_fetch_assoc($team)){
+					echo "<input type='hidden' name='teamid[]' value='" .$row['id']. "'>";
+					
 					print "	<tr><td>";
 					print $row['id'] . " . " . $row['name'];
 					print "	</td><td>";
-					print "	<input type='text' name='kakekin" . $row['id'] . "' size='20' maxlength='20'>";
+				//	print "<input type='link' value='詳細' name='detail" .$row['id']. "' onclick='detail(" .$row['id']. ");'>";
+				print '<a href="javascript:detail(' .$row['id']. ');">詳細</a>';
+					print "	</td><td>";
+					print "	<input type='text' name='kakekin" . $row['id'] . "' size='20' maxlength='20'>VND";
 					print "	</td></tr>";
 				}
 			?>
 			<tr>
-				<td colspan="2" style="text-align:right;"><input type="submit" name="kakeru" value="賭ける" /></td>
+				<td colspan="3" style="text-align:right;"><input type="submit" name="kakeru" value="賭ける" /></td>
 			</tr>
 		</table>
 	</form>
@@ -139,7 +169,7 @@ $member = $dao->getRecords('SELECT * FROM tbl_member where team_id = 1 order by 
 <form name="member" method="POST" action="main.php">
 <table id="member">
 	<tr>
-		<th>名前</th>
+		<th style="width:100px">名前</th>
 		<th>技術力</th>
 		<th>コミュ力</th>
 		<th>ミラクル</th>
