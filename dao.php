@@ -48,13 +48,10 @@ class dao
 		$db_selected = mysql_select_db('brth_20150627', $link);
 
 		if (!$db_selected){
+			echo "error1";
 			die('DB insert error');
 		}
 		$result = mysql_query($sql);
-
-		if (!$result) {
-		    die('INSERT NG'.mysql_error());
-		}
 
 		mysql_close($link);
 		return $result;
