@@ -44,3 +44,29 @@ body
 	text-align:center;
 	border:2px #000 solid;
 }
+
+
+#topleft
+{
+	width: 600px;
+	float: left;
+}
+#topright
+{
+	width: 400px;
+	float: left;
+}
+#team th
+{
+	background-color:#FF8888;
+	width:100px;
+}
+#teamYosokuWrap
+{
+	padding-left:20px;
+
+#teamYosoku th
+{
+	background-color:#FF8888;
+	width:150px;
+}

@@ -23,7 +23,7 @@ session_start();
 
 $dao = new dao();
 
-if ($_POST['btn'] != "") {
+if (isset($_POST['btn']) && $_POST['btn'] != "") {
 	$ids = $_POST['id'];
 	//print_r($ids);
 	
@@ -83,26 +83,58 @@ if ($_POST['btn'] != "") {
 	}
 }
 
-
-
-//$ret = $dao->inputRecords("insert into tbl_team (name) values('aaa');");
-/*
-$ret = $dao->getRecords('SELECT * FROM tbl_team');
-
-if ($ret == null) {
-    die('NG');
-} else {
-	while($row = mysql_fetch_assoc($ret)){
-		print($row['id']);
-		print($row['name']);
-	}
-}
-*/
 // チーム情報を取得
+$team = $dao->getRecords('SELECT * FROM tbl_team');
+$teamYosoku = $dao->getRecords('SELECT * FROM tbl_team ORDER BY RAND() limit 0, 3;');
 $member = $dao->getRecords('SELECT * FROM tbl_member where team_id = 1 order by id;');
 ?>
 
 <body>
+
+<div id="topleft">
+	<span style="font-weight: bold;">予測</span>
+	<div id="teamYosokuWrap">
+		<table id="teamYosoku">
+			<tr>
+				<th>チーム名</th>
+				<th>配当金</th>
+			</tr>
+			<?php
+				$i=1;
+				while($row = mysql_fetch_assoc($teamYosoku)){
+					print "	<tr><td>";
+					print $i++ . " . " . $row['name'];
+					print "	</td><td>";
+					print "	\1,234,567";
+					print "	</td></tr>";
+				}
+			?>
+		</table>
+	</div>
+</div>
+<div id="topright">
+	<form name="team" method="POST" action="main.php">
+		<table id="team">
+			<tr>
+				<th>チーム名</th>
+				<th>かけ金</th>
+			</tr>
+			<?php
+				while($row = mysql_fetch_assoc($team)){
+					print "	<tr><td>";
+					print $row['id'] . " . " . $row['name'];
+					print "	</td><td>";
+					print "	<input type='text' name='kakekin" . $row['id'] . "' size='20' maxlength='20'>";
+					print "	</td></tr>";
+				}
+			?>
+			<tr>
+				<td colspan="2" style="text-align:right;"><input type="submit" name="kakeru" value="賭ける" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<br clear="left">
 
 <form name="member" method="POST" action="main.php">
 <table id="member">
