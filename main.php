@@ -133,13 +133,13 @@ if (isset($_POST['detailid']) && $_POST['detailid'] != "") {
 					print "	</td><td>";
 					if ($i == 2) {
 						//print "	\\1,000,000";
-						print "	\\".mt_rand(1000000, 1500000);
+						print "	\\".number_format(mt_rand(1000000, 1500000));
 					} else if ($i == 3) {
 						//print "	\\600,000";
-						print "	\\".mt_rand(300000, 600000);
+						print "	\\".number_format(mt_rand(300000, 600000));
 					} else {
 						//print "	\\300,000";
-						print "	\\".mt_rand(100000, 300000);
+						print "	\\".number_format(mt_rand(100000, 300000));
 					}
 
 					print "	</td></tr>";
