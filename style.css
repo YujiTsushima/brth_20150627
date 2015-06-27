@@ -6,10 +6,30 @@ body
 	font-size:20px;
 }
 
+#member
+{
+	border-collapse:collapse;
+	border-style:solid;
+	border-width:2px;
+}
+
 #member th
 {
-	background-color:#FF0000;
-	width:100px;
+	background-color:;
+	width:230px;
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
+
+	
+}
+
+#member td
+{
+	background-color:;
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
 }
 
 
@@ -20,22 +40,56 @@ body
 	font-weight:bold;
 	width:100px;
 	text-align:center;
+	border:2px #000 solid;
 }
 
 /* 戦闘力 */
 .sento
 {
-	background-color:#FF00FF;
+	background-color:#F00;
 	font-weight:bold;
-	width:150px;
+	width:100px;
 	text-align:center;
+	
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
 }
 
 /* 戦闘力クラス*/
 .sentoclass
 {
-	background-color:#00FFFF;
+	background-color:#F00;
 	font-weight:bold;
-	width:150px;
+	width:100px;
 	text-align:center;
+	border:#000000;
+	border-style:solid;
+	border-width:2px;
+}
+
+
+#topleft
+{
+	width: 600px;
+	float: left;
+}
+#topright
+{
+	width: 400px;
+	float: left;
+}
+#team th
+{
+	background-color:#FF8888;
+	width:100px;
+}
+#teamYosokuWrap
+{
+	padding-left:20px;
+
+#teamYosoku th
+{
+	background-color:#FF8888;
+	width:150px;
 }
